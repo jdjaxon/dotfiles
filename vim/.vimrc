@@ -1,5 +1,4 @@
 " Author: Jeremy Jackson
-" Remove any setting to regain default vim function.
 
 " Enables syntax highlighting
 syntax on
