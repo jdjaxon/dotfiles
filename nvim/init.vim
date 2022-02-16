@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
     " add 'vim-plug' to the filetype list so vim-plug can update this plugin
     " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    Plug 'vim-airline/vim-airline'
     Plug 'morhetz/gruvbox'
     Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-fugitive'
@@ -93,11 +94,16 @@ nmap <leader>rn <Plug>(coc-rename)
 " Buffer navigation shortcuts
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bd :bd<CR>
 nnoremap <leader>ex :Ex<CR>
 
 " Markdown Preview shortcut
 nnoremap <leader>mp :MarkdownPreview<CR>
 nnoremap <leader>ms :MarkdownPreviewStop<CR>
+
+" Commenting multiple lines
+" NOTE: you will need to enter the commenting character
+vnoremap <leader>/ :'<,'>norm I
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -148,8 +154,10 @@ set scrolloff=7
 " Sets a column to the left of the numbers for debugging indicators. This
 " isn't necessary if you aren't using a plugin for debugging.
 "set signcolumn=yes
+
 " Sets a colored column at the 80-character limit
 "set colorcolumn=80
+
 " Sets color of column
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
