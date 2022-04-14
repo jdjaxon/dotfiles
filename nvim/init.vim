@@ -22,6 +22,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'rust-lang/rust.vim'
 call plug#end()
 
+" For when I typo :w to :W or etc.
+command W w
+command Q q
+command WQ wq
+
 " Set map leader to space
 let mapleader=" "
 
