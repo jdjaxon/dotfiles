@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'rust-lang/rust.vim'
 call plug#end()
 
-" For when I typo :w to :W or etc.
+" For when I typo :w to :W or similar
 command W w
 command Q q
 command WQ wq
@@ -31,6 +31,7 @@ let mapleader=" "
 
 lua require('user.nvim-tree')
 lua require('user.treesitter')
+lua require('user.keymaps')
 
 " Mapping to toggle nvim-tree
 map <leader>e :NvimTreeToggle<CR>
