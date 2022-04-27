@@ -104,13 +104,16 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-alias dotfiles="cd ~/.dotfiles"
+# Project aliases
 alias asu="cd ~/dev/personal/asu"
-alias ofe="nautilus ."
+alias cac="cd ~/dev/personal/linux_cac"
+alias cerebro="cd ~/dev/work/cerebro"
+alias dotfiles="cd ~/.dotfiles"
+alias handbook="cd ~/dev/work/project-orko/content/en/handbook"
 alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
-alias cerebro="cd ~/dev/work/cerebro"
-alias handbook="cd ~/dev/work/project-orko/content/en/handbook"
+
+alias ofe="nautilus ."
 alias nv="nvim"
 alias eiv="nv ~/.config/nvim/init.vim"
 alias erc="nv ~/.zshrc"
