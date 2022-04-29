@@ -53,3 +53,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Nvim Tree
 keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
+
+-- Toggleterm
+keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
+
