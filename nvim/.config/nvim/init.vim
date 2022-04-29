@@ -3,9 +3,12 @@
 call plug#begin('~/.vim/plugged')
     Plug 'christianchiarulli/nvcode-color-schemes.vim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-tree-docs'
     " For file icons
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'nvim-lualine/lualine.nvim'
+    Plug 'akinsho/toggleterm.nvim'
     " Using pre-built version without nodejs and yarn
     " add 'vim-plug' to the filetype list so vim-plug can update this plugin
     " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
@@ -32,9 +35,9 @@ let mapleader=" "
 lua require('user.nvim-tree')
 lua require('user.treesitter')
 lua require('user.keymaps')
-
-" Mapping to toggle nvim-tree
-map <leader>e :NvimTreeToggle<CR>
+lua require('user.web-devicons')
+lua require('user.lualine')
+lua require('user.toggleterm')
 
 " configure nvcode-color-schemes
 let g:nvcode_termcolors=256
