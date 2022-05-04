@@ -46,8 +46,14 @@ let g:nvcode_termcolors=256
 syntax on
 
 " setting colorscheme
-colorscheme nvcode
+try
+    colorscheme nvcode
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme default
+    set background=dark
+endtry
 
+" Checks for 24-bit color support
 if (has("termguicolors"))
     set termguicolors
     hi LineNr ctermbg=NONE guibg=NONE
