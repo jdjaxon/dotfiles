@@ -42,6 +42,7 @@ lua require('user.toggleterm')
 " configure nvcode-color-schemes
 let g:nvcode_termcolors=256
 
+
 " Enables syntax highlighting
 syntax on
 
@@ -52,6 +53,8 @@ catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default
     set background=dark
 endtry
+
+"colorscheme default
 
 " Checks for 24-bit color support
 if (has("termguicolors"))
@@ -212,3 +215,8 @@ augroup PRUNING
     autocmd!
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
+
+"augroup SOURCING
+"    autocmd!
+"    autocmd BufWritePost ~/.config/nvim/init.vim source %
+"augroup END

@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-require'nvim-treesitter.configs'.setup {
+configs.setup {
     ensure_installed = "all",
     sync_install = false,
     ignore_install = { "" },
