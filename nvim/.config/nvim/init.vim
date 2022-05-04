@@ -48,14 +48,14 @@ syntax on
 
 " setting colorscheme
 try
-    colorscheme nvcode
+    colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default
     set background=dark
 endtry
 
+" Setting the neovim background to transparent
 highlight Normal guibg=none
-"highlight NonText guibg=none
 
 " Checks for 24-bit color support
 if (has("termguicolors"))
