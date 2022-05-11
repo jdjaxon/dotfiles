@@ -9,7 +9,7 @@ end
 
 local diagnostics = {
 	"diagnostics",
-	sources = { "nvim_diagnostic" },
+	sources = { "nvim_diagnostic", "coc" },
 	sections = { "error", "warn" },
 	symbols = { error = " ", warn = " " },
 	colored = false,
@@ -21,7 +21,7 @@ local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+    cond = hide_in_width
 }
 
 local mode = {
@@ -33,7 +33,7 @@ local mode = {
 
 local filetype = {
 	"filetype",
-	icons_enabled = false,
+	icons_enabled = true,
 	icon = nil,
 }
 
@@ -45,7 +45,21 @@ local branch = {
 
 local location = {
 	"location",
-	padding = 0,
+	right_padding = 3,
+}
+
+local filename = {
+    "filename",
+    left_padding = 3,
+}
+
+local fileformat = {
+    "fileformat",
+      symbols = {
+        unix = '', -- e712
+        dos = '',  -- e70f
+        mac = '',  -- e711
+    }
 }
 
 -- cool function for progress
@@ -72,21 +86,21 @@ lualine.setup({
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, diagnostics },
-		lualine_b = { mode },
-		lualine_c = {},
+		lualine_a = { mode },
+		lualine_b = { branch, diagnostics },
+		lualine_c = { filename, diff },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_x = { spaces, "encoding", fileformat, filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},
 	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
+        lualine_y = {},
+        lualine_z = {},
 	},
 	tabline = {},
 	extensions = {},
