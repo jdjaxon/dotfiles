@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Project aliases
 alias asu="cd ~/dev/personal/asu"
+alias cse="cd ~/dev/personal/asu/cse205"
 alias cac="cd ~/dev/personal/linux_cac"
 alias cerebro="cd ~/dev/work/cerebro"
 alias dotfiles="cd ~/.dotfiles"
