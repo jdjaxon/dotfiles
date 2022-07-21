@@ -85,11 +85,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -104,6 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+ALIAS_FILE="~/.aliases"
+if [ -f "$ALIAS_FILE" ]
+then
+    . "$ALIAS_FILE"
+fi
+
 # Project aliases
 alias asu="cd ~/dev/personal/asu"
 alias cse="cd ~/dev/personal/cse205-group"
@@ -114,6 +120,7 @@ alias handbook="cd ~/dev/work/project-orko/content/en/handbook"
 alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
 
+# General aliases
 alias ofe="nautilus ."
 alias nv="nvim"
 alias eiv="nv ~/.config/nvim/init.vim"
@@ -125,6 +132,13 @@ alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
 
 sysinfo () {
     # Display system info from motd scripts when the shell starts up
-    for i in /etc/update-motd.d/*; do if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]; then $i; fi; done
+    for i in /etc/update-motd.d/*
+    do
+        if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]
+        then
+            $i
+        fi
+    done
 }
+
 sysinfo
