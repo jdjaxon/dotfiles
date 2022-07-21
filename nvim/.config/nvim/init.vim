@@ -132,7 +132,6 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bd :bd<CR>
-nnoremap <leader>ex :Ex<CR>
 
 " Markdown Preview shortcut
 nnoremap <leader>mp :MarkdownPreview<CR>
