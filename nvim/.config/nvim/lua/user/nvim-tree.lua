@@ -47,7 +47,7 @@ nvim_tree.setup {
       global = false,
     },
     open_file = {
-      resize_window = false,
+      resize_window = true,
       window_picker = {
         enable = true,
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
