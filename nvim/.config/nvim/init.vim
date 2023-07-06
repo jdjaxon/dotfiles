@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'windwp/nvim-autopairs'
-    " For luasnip users.
+    " For luasnip.
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'rafamadriz/friendly-snippets'
@@ -35,9 +35,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'akinsho/bufferline.nvim'
     Plug 'akinsho/toggleterm.nvim'
+    Plug 'RRethy/vim-illuminate'
     " NOTE: make sure to save and source file and then run
     " `:call mkdp#util#install()` to finish setup.
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    """"""""""""""""""""""""""""""""""""
     Plug 'morhetz/gruvbox'
     Plug 'leafgarland/typescript-vim'
     Plug 'vim-utils/vim-man'
@@ -57,6 +59,9 @@ command WQ wq
 let mapleader=" "
 
 lua require('user.cmp')
+lua require('user.lsp')
+lua require('user.comment')
+lua require('user.autopairs')
 lua require('user.nvim-tree')
 lua require('user.treesitter')
 lua require('user.keymaps')
@@ -65,6 +70,7 @@ lua require('user.bufferline')
 lua require('user.lualine')
 lua require('user.toggleterm')
 lua require('user.gitsigns')
+lua require('user.illuminate')
 
 " Enables syntax highlighting
 syntax on
