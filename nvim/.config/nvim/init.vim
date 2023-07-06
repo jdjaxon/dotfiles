@@ -54,7 +54,8 @@ catch /^Vim\%((\a\+)\)\=:E185/
     set background=dark
 endtry
 
-"colorscheme default
+highlight Normal guibg=none
+"highlight NonText guibg=none
 
 " Checks for 24-bit color support
 if (has("termguicolors"))
