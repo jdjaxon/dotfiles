@@ -3,7 +3,7 @@
 [user]
     name = Jeremy Jackson
 [core]
-    editor = vim
+	editor = nvim
 [credential]
     helper = store
 [pull]
