@@ -113,11 +113,12 @@ alias eiv="nv ~/.config/nvim/init.vim"
 alias erc="nv ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias lt="tree -aI '.git'"
-alias docker-pkill='sudo docker rm $(sudo docker ps -aq)'
-alias docker-merc='docker-pkill; sudo docker rmi $(sudo docker images -aq) --force'
+alias docker-pkill='docker rm $(docker ps -aq)'
+alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
 
 sysinfo () {
     # Display system info from motd scripts when the shell starts up
     for i in /etc/update-motd.d/*; do if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]; then $i; fi; done
 }
 sysinfo
+tmux

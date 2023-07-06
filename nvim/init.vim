@@ -1,14 +1,14 @@
 " Author: Jeremy Jackson
 
 call plug#begin('~/.vim/plugged')
+    Plug 'christianchiarulli/nvcode-color-schemes.vim'
+    Plug 'nvim-treesitter/nvim-treesitter'
     " Using pre-built version without nodejs and yarn
     " add 'vim-plug' to the filetype list so vim-plug can update this plugin
     " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'vim-airline/vim-airline'
     Plug 'morhetz/gruvbox'
-    Plug 'jremmen/vim-ripgrep'
-    Plug 'tpope/vim-fugitive'
     Plug 'leafgarland/typescript-vim'
     Plug 'vim-utils/vim-man'
     Plug 'ctrlpvim/ctrlp.vim'
@@ -19,17 +19,36 @@ call plug#begin('~/.vim/plugged')
     Plug 'rust-lang/rust.vim'
 call plug#end()
 
-" Set map leader to spaces
-let mapleader=" "
+" Treesitter configuration - temporary solution
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained",
+    highlight = {
+        enable = true,
+    },
+}
+EOF
+
+" configure nvcode-color-schemes
+let g:nvcode_termcolors=256
 
 " Enables syntax highlighting
 syntax on
 
+" setting colorscheme
+colorscheme nvcode
+
+if (has("termguicolors"))
+    set termguicolors
+    hi LineNr ctermbg=NONE guibg=NONE
+endif
+
+" Set map leader to space
+let mapleader=" "
+
 " Set up for cursor crosshairs
 set cursorline
 set cursorcolumn
-highlight CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
-highlight CursorColumn cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
 
 " Turns off the bells that tell me I'm doing things wrong.
 set noerrorbells
@@ -40,7 +59,6 @@ set guicursor=
 " When using both of these settings, the current line will be absolute, while
 " all others are relative. With only relative, the current line is displayed
 " as 0 (not very useful).
-"
 " Displays all line numbers relative to the current line
 set relativenumber
 " Displays absolute line numbers
@@ -167,13 +185,6 @@ map <Space> <C-w>
 " Go-specific shortcuts
 nnoremap <leader>gb :GoBuild<CR>
 nnoremap <leader>gr :GoRun<CR>
-
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-highlight Normal     ctermbg=NONE guibg=NONE
-highlight LineNr     ctermbg=NONE guibg=NONE
-highlight SignColumn ctermbg=NONE guibg=NONE
 
 " This function removes any trailing whitespace every time the current buffer
 " (file) is saved.
