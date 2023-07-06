@@ -1,6 +1,10 @@
 " Author: Jeremy Jackson
 
 call plug#begin('~/.vim/plugged')
+    " Using pre-built version without nodejs and yarn
+    " add 'vim-plug' to the filetype list so vim-plug can update this plugin
+    " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'morhetz/gruvbox'
     Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-fugitive'
@@ -19,6 +23,13 @@ let mapleader=" "
 
 " Enables syntax highlighting
 syntax on
+
+" Set up for cursor crosshairs
+set cursorline
+set cursorcolumn
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
+
 " Turns off the bells that tell me I'm doing things wrong.
 set noerrorbells
 
@@ -38,7 +49,7 @@ set nu
 set nobackup
 set nowritebackup
 
-" Use tab for trigger completion with characters ahead and navigate.
+" Use <tab> to trigger completion.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
@@ -76,13 +87,17 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Symbol renaming.
+" Symbol renaming shortcut
 nmap <leader>rn <Plug>(coc-rename)
 
 " Buffer navigation shortcuts
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>ex :Ex<CR>
+
+" Markdown Preview shortcut
+nnoremap <leader>mp :MarkdownPreview<CR>
+nnoremap <leader>ms :MarkdownPreviewStop<CR>
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -132,11 +147,11 @@ set scrolloff=7
 
 " Sets a column to the left of the numbers for debugging indicators. This
 " isn't necessary if you aren't using a plugin for debugging.
-set signcolumn=yes
+"set signcolumn=yes
 " Sets a colored column at the 80-character limit
-set colorcolumn=80
+"set colorcolumn=80
 " Sets color of column
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+"highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Set vim leader to spacebar
 map <Space> <C-w>
