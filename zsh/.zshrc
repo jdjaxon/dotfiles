@@ -1,9 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
 export NVM_DIR="$HOME/.nvm"
+# This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Path to your oh-my-zsh installation.
 export ZSH="/home/jeremy/.oh-my-zsh"
 
 # For tmux session manager (tmuxp)
@@ -109,8 +113,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-ALIAS_FILE="~/.aliases"
-if [ -f "$ALIAS_FILE" ]
+ALIAS_FILE="$HOME/.aliases"
+if [ -e "$ALIAS_FILE" ]
 then
     . "$ALIAS_FILE"
 fi
