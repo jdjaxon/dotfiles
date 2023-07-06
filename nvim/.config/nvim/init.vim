@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'christianchiarulli/nvcode-color-schemes.vim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-tree-docs'
+    Plug 'lewis6991/gitsigns.nvim'
     " For file icons
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
@@ -38,6 +39,7 @@ lua require('user.keymaps')
 lua require('user.web-devicons')
 lua require('user.lualine')
 lua require('user.toggleterm')
+lua require('user.gitsigns')
 
 " configure nvcode-color-schemes
 let g:nvcode_termcolors=256
