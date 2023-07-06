@@ -103,6 +103,37 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Git aliases
+alias git-peek='git branch --merged remotes/origin/master | grep -v master | grep -v HEAD | grep "remotes/origin/" | cut -d/ -f3-'
+alias git-rekt='git branch --merged remotes/origin/master | grep -v master | grep -v HEAD | grep "remotes/origin/" | cut -d/ -f3- | xargs -n1 git push -d origin'
+
+# Docker aliases
+alias docker-pkill='docker rm $(docker ps -aq)'
+alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
+
+# Project aliases
+alias asu="cd ~/dev/personal/asu"
+alias cac="cd ~/dev/personal/linux_cac"
+alias create="cd ~/dev/work/create"
+alias levelup="cd ~/dev/work/levelup"
+alias cerebro="cd ~/dev/work/levelup/cerebro"
+alias cerebro-api="cd ~/dev/work/cerebro && tmuxp load cerebro-api"
+alias cerebro-frontend="cd ~/dev/work/cerebro && tmuxp load cerebro-frontend"
+alias dotfiles="cd ~/dotfiles"
+alias handbook="cd ~/dev/work/project-orko/content/en/handbook"
+alias pers="cd ~/dev/personal/"
+alias work="cd ~/dev/work/"
+
+# General aliases
+alias s="kitty +kitten ssh"
+alias nv="$EDITOR"
+alias dev="tmuxp load dev"
+alias eiv="$EDITOR ~/.config/nvim/init.vim"
+alias erc="$EDITOR ~/.zshrc"
+alias sz="source ~/.zshrc"
+alias lt="tree -aI '.git'"
+alias tks="tmux kill-server"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -117,36 +148,6 @@ if [ -e "$ALIAS_FILE" ]
 then
     . "$ALIAS_FILE"
 fi
-
-# Git aliases
-alias git-peek='git branch --merged remotes/origin/master | grep -v master | grep -v HEAD | grep "remotes/origin/" | cut -d/ -f3-'
-alias git-rekt='git branch --merged remotes/origin/master | grep -v master | grep -v HEAD | grep "remotes/origin/" | cut -d/ -f3- | xargs -n1 git push -d origin'
-
-# Docker aliases
-alias docker-pkill='docker rm $(docker ps -aq)'
-alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
-
-# Project aliases
-alias asu="cd ~/dev/personal/asu"
-alias cse="cd ~/dev/personal/cse205-group"
-alias cac="cd ~/dev/personal/linux_cac"
-alias cerebro="cd ~/dev/work/cerebro"
-alias cerebro-api="cd ~/dev/work/cerebro && tmuxp load cerebro-api"
-alias cerebro-frontend="cd ~/dev/work/cerebro && tmuxp load cerebro-frontend"
-alias dotfiles="cd ~/dotfiles"
-alias handbook="cd ~/dev/work/project-orko/content/en/handbook"
-alias pers="cd ~/dev/personal/"
-alias work="cd ~/dev/work/"
-
-# General aliases
-alias nv="$EDITOR"
-alias dev="tmuxp load dev"
-alias ofe="nautilus ."
-alias eiv="$EDITOR ~/.config/nvim/init.vim"
-alias erc="$EDITOR ~/.zshrc"
-alias sz="source ~/.zshrc"
-alias lt="tree -aI '.git'"
-alias tks="tmux kill-server"
 
 # NOTE: might add this back in later.
 #sysinfo () {
