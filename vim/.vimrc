@@ -62,6 +62,9 @@ set colorcolumn=80
 " Sets color of column
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+" Set vim leader to spacebar
+map <Space> <C-w>
+
 call plug#begin('~/.vim/plugged')
     Plug 'morhetz/gruvbox'
     Plug 'jremmen/vim-ripgrep'
@@ -73,6 +76,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ycm-core/YouCompleteMe'
     let g:ycm_autoclose_preview_window_after_completion = 1
     Plug 'mbbill/undotree'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 colorscheme gruvbox
