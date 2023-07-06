@@ -5,7 +5,7 @@ windows:
     focus: true
     layout: main-horizontal
     options:
-      main-pane-height: 50
+      main-pane-height: 45
     panes:
     - shell_command: nvim
       focus: true

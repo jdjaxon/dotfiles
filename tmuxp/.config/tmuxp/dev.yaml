@@ -1,5 +1,4 @@
-session_name: cerebro
-start_directory: $HOME/dev/work/cerebro/
+session_name: dev
 windows:
   - window_name: dev
     focus: true
@@ -10,7 +9,3 @@ windows:
     - shell_command: nvim
       focus: true
     - null
-
-  - window_name: cerebro-make
-    panes:
-      - make build
