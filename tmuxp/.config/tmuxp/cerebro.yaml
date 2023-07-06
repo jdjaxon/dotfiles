@@ -1,0 +1,16 @@
+session_name: cerebro
+start_directory: $HOME/dev/work/cerebro/
+windows:
+  - window_name: dev
+    focus: true
+    layout: main-horizontal
+    options:
+      main-pane-height: 50
+    panes:
+    - shell_command: nvim
+      focus: true
+    - null
+
+  - window_name: cerebro-make
+    panes:
+      - make build
