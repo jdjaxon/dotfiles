@@ -136,6 +136,8 @@ alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
 
 # General aliases
+alias nv="$EDITOR"
+alias dev="tmuxp load dev"
 alias ofe="nautilus ."
 alias eiv="$EDITOR ~/.config/nvim/init.vim"
 alias erc="$EDITOR ~/.zshrc"
