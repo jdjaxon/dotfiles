@@ -6,6 +6,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 export ZSH="/home/jeremy/.oh-my-zsh"
 
+# For tmux session manager (tmuxp)
+export DISABLE_AUTO_TITLE='true'
+export TMUXP_CONFIGDIR="$HOME/.config/tmuxp/"
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]
+then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -84,14 +96,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]
-then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -111,11 +115,21 @@ then
     . "$ALIAS_FILE"
 fi
 
+# Git aliases
+alias git-peek='git branch --merged remotes/origin/master | grep -v master | grep -v HEAD | grep "remotes/origin/" | cut -d/ -f3-'
+alias git-rekt='git branch --merged remotes/origin/master | grep -v master | grep -v HEAD | grep "remotes/origin/" | cut -d/ -f3- | xargs -n1 git push -d origin'
+
+# Docker aliases
+alias docker-pkill='docker rm $(docker ps -aq)'
+alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
+
 # Project aliases
 alias asu="cd ~/dev/personal/asu"
 alias cse="cd ~/dev/personal/cse205-group"
 alias cac="cd ~/dev/personal/linux_cac"
 alias cerebro="cd ~/dev/work/cerebro"
+alias cerebro-api="cd ~/dev/work/cerebro && tmuxp load cerebro-api"
+alias cerebro-frontend="cd ~/dev/work/cerebro && tmuxp load cerebro-frontend"
 alias dotfiles="cd ~/.dotfiles"
 alias handbook="cd ~/dev/work/project-orko/content/en/handbook"
 alias pers="cd ~/dev/personal/"
@@ -123,12 +137,11 @@ alias work="cd ~/dev/work/"
 
 # General aliases
 alias ofe="nautilus ."
-alias eiv="nv ~/.config/nvim/init.vim"
-alias erc="nv ~/.zshrc"
+alias eiv="$EDITOR ~/.config/nvim/init.vim"
+alias erc="$EDITOR ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias lt="tree -aI '.git'"
-alias docker-pkill='docker rm $(docker ps -aq)'
-alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
+alias tks="tmux kill-server"
 
 sysinfo () {
     # Display system info from motd scripts when the shell starts up
