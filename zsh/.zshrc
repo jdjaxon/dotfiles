@@ -104,6 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+alias dotfiles="cd ~/.dotfiles"
+alias asu="cd ~/dev/personal/asu"
+alias ofe="nautilus ."
 alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
 alias cerebro="cd ~/dev/work/cerebro"
