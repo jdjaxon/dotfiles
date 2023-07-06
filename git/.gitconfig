@@ -1,0 +1,8 @@
+[http]
+    sslVerify = false
+[user]
+    name = Jeremy Jackson
+[core]
+    editor = vim
+[credential]
+    helper = store
