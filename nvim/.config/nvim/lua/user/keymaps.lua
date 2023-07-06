@@ -9,12 +9,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Normal --
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -25,10 +19,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>c", ":bdelete! %<CR>:NvimTree<CR>", opts)
-
--- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gv", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gv", opts)
 
 -- Insert --
 -- Press jk fast to escape insert mode
@@ -55,6 +45,5 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Nvim Tree
 keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
 
--- Toggleterm
+-- Python Toggleterm
 keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
-
