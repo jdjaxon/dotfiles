@@ -88,7 +88,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-completions docker docker-compose)
+plugins=(git docker docker-compose tmux)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -111,7 +111,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 
 ALIAS_FILE="$HOME/.aliases"
 if [ -e "$ALIAS_FILE" ]
@@ -149,15 +148,15 @@ alias sz="source ~/.zshrc"
 alias lt="tree -aI '.git'"
 alias tks="tmux kill-server"
 
-sysinfo () {
-    # Display system info from motd scripts when the shell starts up
-    for i in /etc/update-motd.d/*
-    do
-        if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]
-        then
-            $i
-        fi
-    done
-}
-
-sysinfo
+# NOTE: might add this back in later.
+#sysinfo () {
+#    # Display system info from motd scripts when the shell starts up
+#    for i in /etc/update-motd.d/*
+#    do
+#        if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]
+#        then
+#            $i
+#        fi
+#    done
+#}
+#sysinfo
