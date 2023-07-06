@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'nvim-lualine/lualine.nvim'
+    Plug 'akinsho/bufferline.nvim'
     Plug 'akinsho/toggleterm.nvim'
     " Using pre-built version without nodejs and yarn
     " add 'vim-plug' to the filetype list so vim-plug can update this plugin
@@ -37,6 +38,7 @@ lua require('user.nvim-tree')
 lua require('user.treesitter')
 lua require('user.keymaps')
 lua require('user.web-devicons')
+lua require('user.bufferline')
 lua require('user.lualine')
 lua require('user.toggleterm')
 lua require('user.gitsigns')
@@ -64,6 +66,9 @@ if (has("termguicolors"))
     set termguicolors
     hi LineNr ctermbg=NONE guibg=NONE
 endif
+
+" Enable mouse
+set mouse=a
 
 " Set up for cursor crosshairs
 set cursorline
