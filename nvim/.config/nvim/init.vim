@@ -1,6 +1,30 @@
 " Author: Jeremy Jackson
 
+" Needed by bufferline
+set termguicolors
+
+" Setting neovim's path to python3
+let g:python3_host_prog = "/usr/bin/python3"
+
 call plug#begin('~/.vim/plugged')
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'numToStr/Comment.nvim'
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+    Plug 'jose-elias-alvarez/null-ls.nvim'
+    Plug 'windwp/nvim-autopairs'
+    " For luasnip users.
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'rafamadriz/friendly-snippets'
+    """"""""""""""""""""""""
     Plug 'christianchiarulli/nvcode-color-schemes.vim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-tree-docs'
@@ -11,9 +35,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'akinsho/bufferline.nvim'
     Plug 'akinsho/toggleterm.nvim'
-    " Using pre-built version without nodejs and yarn
-    " add 'vim-plug' to the filetype list so vim-plug can update this plugin
-    " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
+    " NOTE: make sure to save and source file and then run
+    " `:call mkdp#util#install()` to finish setup.
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'morhetz/gruvbox'
     Plug 'leafgarland/typescript-vim'
@@ -22,7 +45,6 @@ call plug#begin('~/.vim/plugged')
     let g:ctrlp_show_hidden = 1
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'mbbill/undotree'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'rust-lang/rust.vim'
 call plug#end()
 
@@ -34,6 +56,7 @@ command WQ wq
 " Set map leader to space
 let mapleader=" "
 
+lua require('user.cmp')
 lua require('user.nvim-tree')
 lua require('user.treesitter')
 lua require('user.keymaps')
@@ -43,23 +66,14 @@ lua require('user.lualine')
 lua require('user.toggleterm')
 lua require('user.gitsigns')
 
-" configure nvcode-color-schemes
-let g:nvcode_termcolors=256
-
-
 " Enables syntax highlighting
 syntax on
-
-" setting colorscheme
-try
-    colorscheme gruvbox
-catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-    set background=dark
-endtry
+" configure nvcode-color-schemes
+let g:nvcode_termcolors=256
+colorscheme gruvbox
 
 " Setting the neovim background to transparent
-highlight Normal guibg=none
+highlight Normal ctermbg=NONE guibg=NONE
 
 " Checks for 24-bit color support
 if (has("termguicolors"))
@@ -92,52 +106,6 @@ set nu
 set nobackup
 set nowritebackup
 
-" Use <tab> to trigger completion.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Symbol renaming shortcut
-nmap <leader>rn <Plug>(coc-rename)
-
-" Buffer navigation shortcuts
-nnoremap <leader>bp :bp<CR>
-nnoremap <leader>bn :bn<CR>
-nnoremap <leader>bd :bd<CR>
-
 " Markdown Preview shortcut
 nnoremap <leader>mp :MarkdownPreview<CR>
 nnoremap <leader>ms :MarkdownPreviewStop<CR>
@@ -145,11 +113,6 @@ nnoremap <leader>ms :MarkdownPreviewStop<CR>
 " Commenting multiple lines
 " NOTE: you will need to enter the commenting character
 vnoremap <leader>/ :'<,'>norm I
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " vim normally highlights every occurence of your search pattern until to you
 " tell it not to. This disables that.
@@ -192,22 +155,15 @@ set incsearch
 " Begins scrolling when you are eight lines from top or bottom of screen
 set scrolloff=7
 
-" Sets a column to the left of the numbers for debugging indicators. This
-" isn't necessary if you aren't using a plugin for debugging.
-"set signcolumn=yes
-
 " Sets a colored column at the 80-character limit
-"set colorcolumn=80
+set colorcolumn=80
 
 " Sets color of column
-"highlight ColorColumn ctermbg=0 guibg=lightgrey
+highlight ColorColumn ctermbg=NONE guibg=gray19
 
 " Set vim leader to spacebar
 map <Space> <C-w>
 
-" Go-specific shortcuts
-nnoremap <leader>gb :GoBuild<CR>
-nnoremap <leader>gr :GoRun<CR>
 
 " This function removes any trailing whitespace every time the current buffer
 " (file) is saved.
@@ -222,8 +178,3 @@ augroup PRUNING
     autocmd!
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
-
-"augroup SOURCING
-"    autocmd!
-"    autocmd BufWritePost ~/.config/nvim/init.vim source %
-"augroup END
