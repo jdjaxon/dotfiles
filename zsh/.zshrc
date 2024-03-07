@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin
 
 export NVM_DIR="$HOME/.nvm"
 # This loads nvm
@@ -116,6 +116,7 @@ alias asu="cd ~/dev/personal/asu"
 alias cac="cd ~/dev/personal/linux_cac"
 alias create="cd ~/dev/work/create"
 alias levelup="cd ~/dev/work/levelup"
+alias senior="cd ~/dev/work/levelup/jjackson3"
 alias cerebro="cd ~/dev/work/levelup/cerebro"
 alias cerebro-api="cd ~/dev/work/cerebro && tmuxp load cerebro-api"
 alias cerebro-frontend="cd ~/dev/work/cerebro && tmuxp load cerebro-frontend"
