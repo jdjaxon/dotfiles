@@ -10,6 +10,9 @@ configs.setup {
     autopairs = {
         enable = true,
     },
+    autotag = {
+        enable = true,
+    },
     tree_docs = {
         enable = true
     },

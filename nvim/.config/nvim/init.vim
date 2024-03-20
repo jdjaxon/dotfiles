@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'windwp/nvim-autopairs'
+    Plug 'windwp/nvim-ts-autotag'
     " For luasnip.
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
@@ -62,6 +63,7 @@ lua require('user.cmp')
 lua require('user.lsp')
 lua require('user.comment')
 lua require('user.autopairs')
+"lua require('user.autotag')
 lua require('user.nvim-tree')
 lua require('user.treesitter')
 lua require('user.keymaps')
