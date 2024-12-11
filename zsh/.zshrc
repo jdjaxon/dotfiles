@@ -10,6 +10,9 @@ export NVM_DIR="$HOME/.nvm"
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jeremy/.oh-my-zsh"
 
+# Ansible exports
+export ANSIBLE_NOCOWS=1
+
 # For tmux session manager (tmuxp)
 export DISABLE_AUTO_TITLE='true'
 export TMUXP_CONFIGDIR="$HOME/.config/tmuxp/"
@@ -88,7 +91,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose tmux)
+plugins=(git docker docker-compose tmux kubectl-autocomplete)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -126,6 +129,7 @@ alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
 
 # General aliases
+alias k="kubectl"
 alias s="kitty +kitten ssh"
 alias nv="$EDITOR"
 alias dev="tmuxp load dev"
