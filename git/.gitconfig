@@ -2,9 +2,12 @@
     sslVerify = false
 [user]
     name = Jeremy Jackson
+	email = 87815518+jdjaxon@users.noreply.github.com
 [core]
 	editor = nvim
 [credential]
     helper = store
 [pull]
 	rebase = false
+[init]
+	defaultbranch = main
