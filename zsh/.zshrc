@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/go/bin
 
 export NVM_DIR="$HOME/.nvm"
 # This loads nvm
@@ -127,6 +127,8 @@ alias dotfiles="cd ~/dotfiles"
 alias handbook="cd ~/dev/work/project-orko/content/en/handbook"
 alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
+alias mentees="cd ~/dev/work/levelup/mentees/"
+alias sb="cd ~/dev/personal/second_brain/"
 
 # General aliases
 alias k="kubectl"
@@ -166,3 +168,6 @@ fi
 #    done
 #}
 #sysinfo
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
