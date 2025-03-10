@@ -100,7 +100,7 @@ set cursorcolumn
 set noerrorbells
 
 " Set cursor to always appear as a block (personal preference)
-set guicursor=
+" set guicursor=
 
 " When using both of these settings, the current line will be absolute, while
 " all others are relative. With only relative, the current line is displayed
