@@ -102,11 +102,6 @@ set noerrorbells
 " Set cursor to always appear as a block (personal preference)
 " set guicursor=
 
-" When using both of these settings, the current line will be absolute, while
-" all others are relative. With only relative, the current line is displayed
-" as 0 (not very useful).
-" Displays all line numbers relative to the current line
-set relativenumber
 " Displays absolute line numbers
 set nu
 
