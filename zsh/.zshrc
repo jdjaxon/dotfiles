@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/go/bin
+# export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/go/bin
 
 export NVM_DIR="$HOME/.nvm"
 # This loads nvm
@@ -117,18 +117,13 @@ alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
 # Project aliases
 alias asu="cd ~/dev/personal/asu"
 alias cac="cd ~/dev/personal/linux_cac"
-alias create="cd ~/dev/work/create"
-alias levelup="cd ~/dev/work/levelup"
-alias egz="cd ~/dev/work/levelup/egz"
-alias senior="cd ~/dev/work/levelup/jjackson3"
-alias cerebro="cd ~/dev/work/levelup/cerebro"
-alias cerebro-api="cd ~/dev/work/cerebro && tmuxp load cerebro-api"
-alias cerebro-frontend="cd ~/dev/work/cerebro && tmuxp load cerebro-frontend"
+alias r2d2="cd ~/dev/work/r2d2"
+alias senior="cd ~/dev/work/r2d2/jjackson3"
 alias dotfiles="cd ~/dotfiles"
-alias handbook="cd ~/dev/work/levelup/handbook/"
+alias handbook="cd ~/dev/work/r2d2/handbook/"
 alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
-alias mentees="cd ~/dev/work/levelup/mentees/"
+alias mentees="cd ~/dev/work/r2d2/mentees/"
 alias sb="cd ~/dev/personal/second_brain/"
 
 # General aliases
@@ -156,19 +151,6 @@ if [ -e "$ALIAS_FILE" ]
 then
     . "$ALIAS_FILE"
 fi
-
-# NOTE: might add this back in later.
-#sysinfo () {
-#    # Display system info from motd scripts when the shell starts up
-#    for i in /etc/update-motd.d/*
-#    do
-#        if [ "$i" != "/etc/update-motd.d/98-fsck-at-reboot" ]
-#        then
-#            $i
-#        fi
-#    done
-#}
-#sysinfo
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
