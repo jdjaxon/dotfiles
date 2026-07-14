@@ -1,14 +1,21 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/go/bin
 
+# MacOS NVM config
 export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+
+# TODO: Create separate handling for Linux and MacOS
+# Linux NVM config
 # This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jeremy/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Ansible exports
 export ANSIBLE_NOCOWS=1
@@ -25,17 +32,7 @@ else
   export EDITOR='nvim'
 fi
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -60,7 +57,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -115,21 +112,12 @@ alias docker-pkill='docker rm $(docker ps -aq)'
 alias docker-merc='docker-pkill; docker rmi $(docker images -aq) --force'
 
 # Project aliases
-alias asu="cd ~/dev/personal/asu"
-alias cac="cd ~/dev/personal/linux_cac"
-alias r2d2="cd ~/dev/work/r2d2"
-alias senior="cd ~/dev/work/r2d2/jjackson3"
 alias dotfiles="cd ~/dotfiles"
-alias handbook="cd ~/dev/work/r2d2/handbook/"
 alias pers="cd ~/dev/personal/"
 alias work="cd ~/dev/work/"
-alias mentees="cd ~/dev/work/r2d2/mentees/"
-alias sb="cd ~/dev/personal/second_brain/"
 
 # General aliases
 alias k="kubectl"
-alias s="kitty +kitten ssh"
-alias nv="$EDITOR"
 alias dev="tmuxp load dev"
 alias eiv="$EDITOR ~/.config/nvim/init.vim"
 alias erc="$EDITOR ~/.zshrc"
@@ -156,4 +144,4 @@ fi
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Turso
-export PATH="$PATH:/home/jeremy/.turso"
+export PATH="$PATH:$HOME/.turso"

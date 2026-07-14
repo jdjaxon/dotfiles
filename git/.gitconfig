@@ -1,13 +1,24 @@
-[http]
-    sslVerify = false
 [user]
     name = Jeremy Jackson
-	email = 87815518+jdjaxon@users.noreply.github.com
+    useConfigOnly = true
+
+[includeIf "gitdir:~/dev/personal/"]
+    path = ~/dotfiles/git/.gitconfig-personal
+
+[includeIf "gitdir:~/dotfiles/"]
+    path = ~/dotfiles/git/.gitconfig-personal
+
+[includeIf "gitdir:~/dev/work/"]
+    path = ~/dotfiles/git/.gitconfig-work
+
 [core]
 	editor = nvim
+
 [credential]
     helper = store
+
 [pull]
 	rebase = false
+
 [init]
 	defaultbranch = main
