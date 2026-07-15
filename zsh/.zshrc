@@ -1,18 +1,38 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/go/bin
 
-# MacOS NVM config
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
+# MacOS NVM config
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# TODO: Create separate handling for Linux and MacOS
+# TODO: May need to create separate handling for Linux and MacOS
 # Linux NVM config
 # This loads nvm
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # This loads nvm bash_completion
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+export NODE_EXTRA_CA_CERTS=$HOME/Documents/certificates/dodcerts.pem
+
+[[ -r "$HOME/.config/zsh/secrets.zsh" ]] && \. "$HOME/.config/zsh/secrets.zsh"
+
+# TODO: refine this
+# inject_du_glpat() {
+#     local token
+#
+#     if [[ "$OSTYPE" == darwin* ]]; then
+#         token="$(security find-generic-password \
+#             -a "$USER" \
+#             -s "du-glpat" \
+#             -w)"
+#     else
+#         token="$(secret-tool lookup service gitlab account "$USER")"
+#     fi
+#
+#     DU_NPM_TOKEN="$token" "$@"
+# }
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -88,7 +108,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose tmux kubectl-autocomplete)
+plugins=(git docker docker-compose tmux kubectl)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -102,6 +122,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Git aliases
 alias git-peek='git branch --merged remotes/origin/master | grep -v master | grep -v HEAD | grep "remotes/origin/" | cut -d/ -f3-'
@@ -124,24 +153,3 @@ alias erc="$EDITOR ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias lt="tree -aI '.git'"
 alias tks="tmux kill-server"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-ALIAS_FILE="$HOME/.aliases"
-if [ -e "$ALIAS_FILE" ]
-then
-    . "$ALIAS_FILE"
-fi
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-# Turso
-export PATH="$PATH:$HOME/.turso"
